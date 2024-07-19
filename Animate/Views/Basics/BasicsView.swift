@@ -49,7 +49,9 @@ struct BasicsView: View {
             }
             
             VStack {
-                Text("Animation Duration: \(animationDuration.formatted())")
+                Text("Animation Duration: \(String(format: "%.1f", animationDuration))s")
+                    .contentTransition(.numericText())
+                    .animation(.smooth, value: animationDuration)
                 Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
                     .frame(width: 300)
             }
@@ -70,7 +72,7 @@ private extension BasicsView {
             ZStack {
                 color
                     .frame(width: 200, height: 200)
-                    .clipShape(.rect(cornerRadius: 12))
+                    .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                 
                 Text(animationTitle)
                     .font(.title3)
@@ -90,12 +92,12 @@ private extension BasicsView {
                     .padding(8)
                     .frame(maxWidth: .infinity)
                     .background(.clear)
-                    .clipShape(.rect(cornerRadius: 8))
+                    .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                     .overlay {
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
                             .stroke(color)
                     }
-                    .contentShape(.rect(cornerRadius: 8))
+                    .contentShape(.rect(cornerRadius: Constants.UI.cornerRadius))
             }
             .buttonStyle(PlainScalingButtonStyle())
         }

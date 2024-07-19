@@ -26,9 +26,7 @@ private extension SideBarView {
                         .padding(.vertical, 12)
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            withAnimation {
-                                self.selectedAppScreen = appScreen
-                            }
+                            self.selectedAppScreen = appScreen
                         }                    
                 }
             }
@@ -40,13 +38,13 @@ private extension SideBarView {
     func row(_ appScreen : AppScreen) -> some View {
         HStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
                     .fill(.clear)
                     .frame(width: 14, height: 3)
                     .rotationEffect(Angle(degrees: 90))
                 
                 if appScreen == selectedAppScreen {
-                    RoundedRectangle(cornerRadius: 30)
+                    RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
                         .fill(.pink)
                         .frame(width: 14, height: 3)
                         .rotationEffect(Angle(degrees: 90))
@@ -59,6 +57,7 @@ private extension SideBarView {
                 .foregroundStyle(appScreen == selectedAppScreen ? .pink : .primary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .animation(.smooth, value: selectedAppScreen)
     }
 }
 

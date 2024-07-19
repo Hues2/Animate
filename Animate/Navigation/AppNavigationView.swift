@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppNavigationView: View {
-    @State private var selectedAppScreen : AppScreen = .basics
+    @State private var selectedAppScreen : AppScreen = .scrollTransitions
     
     var body: some View {
         NavigationSplitView {
@@ -18,7 +18,7 @@ struct AppNavigationView: View {
             case .basics:
                 BasicsView()
             case .scrollTransitions:
-                Text("Scroll transitions")
+                ScrollTransitionsView()
             case .matchedGeometry:
                 Text("Matched Geometry")
             }
