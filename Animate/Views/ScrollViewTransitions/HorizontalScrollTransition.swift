@@ -32,9 +32,15 @@ struct HorizontalScrollTransition: View {
 
 private extension HorizontalScrollTransition {
     func card(_ color : Color) -> some View {
-        color
-            .frame(width: 324, height: 324)
-            .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
+        ZStack {
+            color
+                .frame(width: 480, height: 324)
+                .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
+            
+            Text("Random Text")
+                .font(.title2)
+                .fontWeight(.bold)
+        }
     }
 }
 

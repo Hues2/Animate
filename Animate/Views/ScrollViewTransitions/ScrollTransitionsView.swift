@@ -35,37 +35,9 @@ struct ScrollTransitionsView: View {
 private extension ScrollTransitionsView {
     var picker : some View {
         HStack(spacing: 24) {
-            Text("Horizontal")
-                .onTapGesture {
-                    withAnimation(.smooth) {
-                        self.scrollType = .horizontal
-                    }
-                }
-                .padding(8)
-                .overlay(alignment: .bottom) {
-                    if scrollType == .horizontal {
-                        RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
-                            .fill(.pink)
-                            .frame(width: 44, height: 2)
-                            .matchedGeometryEffect(id: "selection", in: namespace)
-                    }
-                }
+            pickerSegment(.horizontal)
+            pickerSegment(.vertical)
             
-            Text("Vertical")
-                .onTapGesture {
-                    withAnimation(.smooth) {
-                        self.scrollType = .vertical
-                    }
-                }
-                .padding(8)
-                .overlay(alignment: .bottom) {
-                    if scrollType == .vertical {
-                        RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
-                            .fill(.pink)
-                            .frame(width: 44, height: 2)
-                            .matchedGeometryEffect(id: "selection", in: namespace)
-                    }
-                }
         }
         .font(.title3)
         .fontWeight(.semibold)
@@ -77,6 +49,25 @@ private extension ScrollTransitionsView {
                 .shadow(color: .black.opacity(0.5), radius: 4)
         }
         .padding()
+    }
+    
+    func pickerSegment(_ scrollType : ScrollType) -> some View {
+        Text(scrollType == .horizontal ? "Horizontal" : "Vertical")
+            .contentShape(.rect)
+            .onTapGesture {
+                withAnimation(.smooth) {
+                    self.scrollType = scrollType
+                }
+            }
+            .padding(8)
+            .overlay(alignment: .bottom) {
+                if self.scrollType == scrollType {
+                    RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
+                        .fill(.pink)
+                        .frame(width: 44, height: 2)
+                        .matchedGeometryEffect(id: "selection", in: namespace)
+                }
+            }
     }
 }
 
