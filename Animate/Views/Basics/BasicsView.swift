@@ -28,11 +28,13 @@ struct BasicsView: View {
                         animation: .easeInOut(duration: animationDuration),
                         show: $showPink)
                 
+                // Snappy is fast and has a slight bounce (extra bounce can be added)
                 section(color: .blue,
                         animationTitle: "Snappy",
                         animation: .snappy(duration: animationDuration),
                         show: $showBlue)
                 
+                // Bouncy is like a pre-defined spring
                 section(color: .orange,
                         animationTitle: "Bouncy",
                         animation: .bouncy(duration: animationDuration),
@@ -40,7 +42,9 @@ struct BasicsView: View {
                 
                 section(color: .yellow,
                         animationTitle: "Spring",
-                        animation: .spring(duration: animationDuration),
+                        // Response --> How stiff the spring is. The lower the value, the faster the bounces
+                        // Damping Fraction --> How much the animation should resist bouncing back and forth. Lower the value, the more it bounces back and forth
+                        animation: .spring(response: animationDuration, dampingFraction: 0.5),
                         show: $showYellow)
             }
             
