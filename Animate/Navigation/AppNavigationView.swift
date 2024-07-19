@@ -20,7 +20,7 @@ struct AppNavigationView: View {
             case .scrollTransitions:
                 ScrollTransitionsView()
             case .matchedGeometry:
-                Text("Matched Geometry")
+                MatchedGeometryView()
             }
         }
     }

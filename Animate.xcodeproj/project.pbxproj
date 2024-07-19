@@ -20,6 +20,7 @@
 		2EB724B32C4AF14D0067487F /* ScrollTransitionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B22C4AF14D0067487F /* ScrollTransitionsView.swift */; };
 		2EB724B52C4AF2EA0067487F /* VerticalScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B42C4AF2EA0067487F /* VerticalScrollTransition.swift */; };
 		2EB724B72C4AF8810067487F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B62C4AF8810067487F /* Constants.swift */; };
+		2EB724BA2C4B049B0067487F /* MatchedGeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2EB724B22C4AF14D0067487F /* ScrollTransitionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTransitionsView.swift; sourceTree = "<group>"; };
 		2EB724B42C4AF2EA0067487F /* VerticalScrollTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScrollTransition.swift; sourceTree = "<group>"; };
 		2EB724B62C4AF8810067487F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				2EB724A82C4ADC8F0067487F /* Basics */,
 				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
+				2EB724B82C4B04750067487F /* MatchedGeometry */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +137,14 @@
 				2EB724B42C4AF2EA0067487F /* VerticalScrollTransition.swift */,
 			);
 			path = ScrollViewTransitions;
+			sourceTree = "<group>";
+		};
+		2EB724B82C4B04750067487F /* MatchedGeometry */ = {
+			isa = PBXGroup;
+			children = (
+				2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */,
+			);
+			path = MatchedGeometry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 				2EB724A22C4AD2E50067487F /* AppNavigationView.swift in Sources */,
 				2EB724A72C4AD3870067487F /* SideBarView.swift in Sources */,
 				2EB724B12C4AEFD30067487F /* HorizontalScrollTransition.swift in Sources */,
+				2EB724BA2C4B049B0067487F /* MatchedGeometryView.swift in Sources */,
 				2EB724A52C4AD3580067487F /* AppScreen.swift in Sources */,
 				2EB724B52C4AF2EA0067487F /* VerticalScrollTransition.swift in Sources */,
 			);

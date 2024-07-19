@@ -16,7 +16,8 @@ private extension ScrollTransitionsView {
 struct ScrollTransitionsView: View {
     @Namespace private var namespace
     @State private var scrollType : ScrollType = .horizontal
-    private let colors : [Color] = [.green, .pink, .blue, .orange, .yellow, .red, .purple, .cyan, .indigo, .mint, .white, .black, .green, .pink, .blue, .orange, .yellow, .red, .purple]
+    private let colors : [Color] = [.green, .pink, .blue, .orange, .yellow, .red, .purple, .cyan, .indigo, .mint,
+                                    .white, .black, .green, .pink, .blue, .orange, .yellow, .red, .purple]
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -34,7 +35,7 @@ struct ScrollTransitionsView: View {
 
 private extension ScrollTransitionsView {
     var picker : some View {
-        HStack(spacing: 24) {
+        HStack(spacing: 16) {
             pickerSegment(.horizontal)
             pickerSegment(.vertical)
             
