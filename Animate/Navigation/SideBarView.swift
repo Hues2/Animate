@@ -53,7 +53,8 @@ private extension SideBarView {
             }
             
             Text(appScreen.sideBarString)
-                .font(.headline)
+                .font(.title3)
+                .fontWeight(.semibold)
                 .foregroundStyle(appScreen == selectedAppScreen ? .pink : .primary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

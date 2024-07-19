@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct MatchedGeometryView: View {
+    struct CustomColor : Identifiable, Equatable {
+        let id = UUID().uuidString
+        let color : Color
+    }
     @Namespace private var namespace
-    @State private var selectedColors : [Color] = []
-    @State private var allColours : [Color] = Constants.UI.colors
+    @State private var selectedColors : [CustomColor] = []
+    @State private var allColors : [CustomColor] = Constants.UI.colors.map({ CustomColor(color: $0) })
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -23,7 +27,7 @@ struct MatchedGeometryView: View {
     var body: some View {
         VStack(spacing: 40) {
             selectedColorsView
-            allColors
+            allColorsView
         }
         .padding(.vertical, 24)
     }
@@ -36,21 +40,21 @@ private extension MatchedGeometryView {
                 .font(.title)
                 .fontWeight(.ultraLight)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
-            HStack {
-                ForEach(selectedColors, id: \.self) { color in
-                    card(color, 100) {
-                        self.selectedColors.removeAll(where: { $0 == color })
+                        
+                HStack {
+                    ForEach(selectedColors) { color in
+                        card(color, 100) {
+                            self.selectedColors.removeAll(where: { $0 == color })
+                        }
                     }
                 }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 120)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 120)
         }
         .padding(24)
     }
     
-    var allColors : some View {
+    var allColorsView : some View {
         VStack(spacing: 24) {
             Text("All Colors:")
                 .font(.title)
@@ -58,9 +62,10 @@ private extension MatchedGeometryView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(allColours, id: \.self) { color in
+                ForEach(allColors) { color in
                     if !selectedColors.contains(color) {
                         card(color, 100) {
+                            self.selectedColors.removeAll(where: { $0 == color })
                             self.selectedColors.append(color)
                         }
                     }
@@ -71,12 +76,12 @@ private extension MatchedGeometryView {
         .padding(24)
     }
     
-    func card(_ color : Color, _ size : CGFloat, _ action : @escaping () -> Void) -> some View {
-        color
+    func card(_ color : CustomColor, _ size : CGFloat, _ action : @escaping () -> Void) -> some View {
+        color.color
             .frame(width: size, height: size)
             .clipShape(.rect(cornerRadius: Constants.UI.pillShapeCornerRadius))
             .cornerRadius(10)
-            .matchedGeometryEffect(id: color.description, in: namespace)
+            .matchedGeometryEffect(id: color.id, in: namespace)
             .onTapGesture {
                 withAnimation(.smooth) {
                     action()
