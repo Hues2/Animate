@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct KeyFramesView: View {
+    private let iconSize : CGFloat = 124
     private let animationDuration : CGFloat = 1.0
+    // Checkmarck
+    @State private var checkmarkToggle : Bool = false
+    private let checkmarkRotationAmount : CGFloat = 360
     // Heart
     @State private var heartToggle : Bool = false
-    private let heartRotationAmount : CGFloat = 180
     // Warning
     @State private var warningToggle : Bool = false
-    private let warningRotationAmount : CGFloat = 45
+    private let warningRotationAmount : CGFloat = 20
     
     var body: some View {
         VStack {
             HStack(spacing: 52) {
-                football
+                basketball
+                checkmark
                 heart
                 warning
             }
@@ -30,28 +34,28 @@ struct KeyFramesView: View {
     }
 }
 
-// MARK: Football
 private extension KeyFramesView {
-    struct FootballAnimationValues {
-        var yOffset = 0.0
-        var verticalStretch = 1.0
+    func icon(_ iconName : String, _ color : Color) -> some View {
+        Image(systemName: iconName)
+            .resizable()
+            .symbolVariant(.fill)
+            .foregroundStyle(color)
+            .frame(width: 100, height: 100)
     }
-    
-    var football : some View {
+}
+
+// MARK: Basketball
+private extension KeyFramesView {
+    var basketball : some View {
         VStack(spacing: 8) {
-            Image(systemName: "soccerball")
-                .resizable()
-                .symbolVariant(.fill)
-                .symbolRenderingMode(.multicolor)
-                .foregroundStyle(.white, .black)
-                .frame(width: 100, height: 100)
-                .keyframeAnimator(initialValue: FootballAnimationValues(),
+            icon("basketball.fill", .orange)
+                .keyframeAnimator(initialValue: AnimatableValues(),
                                   repeating: true) { content, value in
                     content
-                        .scaleEffect(y: value.verticalStretch, anchor: .bottom)
+                        .scaleEffect(y: value.scale, anchor: .bottom)
                         .offset(y: value.yOffset)
                 } keyframes: { _ in
-                    KeyframeTrack(\.verticalStretch) {
+                    KeyframeTrack(\.scale) {
                         CubicKeyframe(0.9, duration: animationDuration * 0.15)
                         CubicKeyframe(1.05, duration: animationDuration * 0.4)
                         CubicKeyframe(1, duration: animationDuration * 0.15)
@@ -66,32 +70,21 @@ private extension KeyFramesView {
                     }
                 }
             
-            Text("Bouncing Football")
+            Text("Basketball")
                 .font(.headline)
         }
     }
 }
 
-// MARK: Heart
+// MARK: Checkmark
 private extension KeyFramesView {
-    struct HeartAnimationValues {
-        var yOffset : CGFloat = .zero
-        var rotationDegrees : CGFloat = .zero
-        var scale : CGFloat = 1
-    }
-    
-    var heart : some View {
+    var checkmark : some View {
         VStack(spacing: 8) {
-            Image(systemName: "heart")
-                .resizable()
-                .symbolVariant(.fill)
-                .foregroundStyle(.pink)
-                .frame(width: 100, height: 100)
-                .keyframeAnimator(initialValue: HeartAnimationValues(),
-                                  trigger: heartToggle) { content, value in
+            icon("checkmark.circle", .green)
+                .keyframeAnimator(initialValue: AnimatableValues(),
+                                  trigger: checkmarkToggle) { content, value in
                     content
                         .offset(y: value.yOffset)
-                        .scaleEffect(value.scale)
                         .rotation3DEffect(.init(degrees: value.rotationDegrees),
                                           axis: (x: 0.0, y: 1.0, z: 0.0)
                         )
@@ -105,16 +98,37 @@ private extension KeyFramesView {
                     KeyframeTrack(\.rotationDegrees) {
                         CubicKeyframe(.zero,
                                       duration: animationDuration * 0.33)
-                        CubicKeyframe(heartRotationAmount,
+                        CubicKeyframe(checkmarkRotationAmount,
                                       duration: animationDuration * 0.33)
-                        CubicKeyframe(heartRotationAmount,
+                        CubicKeyframe(checkmarkRotationAmount,
                                       duration: animationDuration * 0.33)
                     }
-                    
+                }
+                .onTapGesture {
+                    checkmarkToggle.toggle()
+                }
+            
+            Text("Checkmark")
+                .font(.headline)
+        }
+    }
+}
+
+// MARK: Heart
+private extension KeyFramesView {
+    var heart : some View {
+        VStack(spacing: 8) {
+            icon("heart", .pink)
+                .keyframeAnimator(initialValue: AnimatableValues(),
+                                  trigger: heartToggle) { content, value in
+                    content
+                        .scaleEffect(value.scale)
+                } keyframes: { _ in
                     KeyframeTrack(\.scale) {
-                        CubicKeyframe(1.2, duration: animationDuration * 0.33)
-                        CubicKeyframe(1.2, duration: animationDuration * 0.33)
-                        CubicKeyframe(1, duration: animationDuration * 0.33)
+                        SpringKeyframe(1.5, duration: animationDuration * 0.25)
+                        SpringKeyframe(1, duration: animationDuration * 0.25)
+                        SpringKeyframe(1.3, duration: animationDuration * 0.25)
+                        SpringKeyframe(1, duration: animationDuration * 0.25)
                     }
                 }
                 .onTapGesture {
@@ -129,54 +143,54 @@ private extension KeyFramesView {
 
 // MARK: Warning
 private extension KeyFramesView {
-    struct WarningAnimationValues {
-        var yOffset : CGFloat = .zero
-        var rotationDegrees : CGFloat = .zero
-        var scale : CGFloat = 1
-    }
-    
     var warning : some View {
         VStack(spacing: 8) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .resizable()
-                .symbolVariant(.fill)
-                .foregroundStyle(.yellow)
-                .frame(width: 100, height: 100)
-                .keyframeAnimator(initialValue: WarningAnimationValues(),
-                                  trigger: heartToggle) { content, value in
+            icon("exclamationmark.triangle.fill", .yellow)
+                .keyframeAnimator(initialValue: AnimatableValues(),
+                                  trigger: warningToggle) { content, value in
                     content
-                        .offset(y: value.yOffset)
                         .scaleEffect(value.scale)
                         .rotationEffect(.init(degrees: value.rotationDegrees))
                 } keyframes: { _ in
-                    KeyframeTrack(\.yOffset) {
-                        CubicKeyframe(-100, duration: animationDuration * 0.33)
-                        CubicKeyframe(-100, duration: animationDuration * 0.33)
-                        CubicKeyframe(0, duration: animationDuration * 0.33)
-                    }
-                    
                     KeyframeTrack(\.rotationDegrees) {
                         CubicKeyframe(.zero,
-                                      duration: animationDuration * 0.33)
+                                      duration: animationDuration * 0.25)
                         CubicKeyframe(warningRotationAmount,
-                                      duration: animationDuration * 0.33)
+                                      duration: animationDuration * 0.1)
+                        CubicKeyframe(-warningRotationAmount,
+                                      duration: animationDuration * 0.1)
                         CubicKeyframe(warningRotationAmount,
-                                      duration: animationDuration * 0.33)
+                                      duration: animationDuration * 0.1)
+                        CubicKeyframe(-warningRotationAmount,
+                                      duration: animationDuration * 0.1)
+                        CubicKeyframe(.zero,
+                                      duration: animationDuration * 0.1)
+                        CubicKeyframe(.zero,
+                                      duration: animationDuration * 0.25)
                     }
                     
                     KeyframeTrack(\.scale) {
-                        CubicKeyframe(1.2, duration: animationDuration * 0.33)
-                        CubicKeyframe(1.2, duration: animationDuration * 0.33)
+                        CubicKeyframe(1.4, duration: animationDuration * 0.33)
+                        CubicKeyframe(1.4, duration: animationDuration * 0.33)
                         CubicKeyframe(1, duration: animationDuration * 0.33)
                     }
                 }
                 .onTapGesture {
-                    heartToggle.toggle()
+                    warningToggle.toggle()
                 }
             
             Text("Warning")
                 .font(.headline)
         }
+    }
+}
+
+private extension KeyFramesView {
+    struct AnimatableValues {
+        var yOffset = 0.0
+        var verticalStretch = 1.0
+        var rotationDegrees : CGFloat = .zero
+        var scale : CGFloat = 1
     }
 }
 
