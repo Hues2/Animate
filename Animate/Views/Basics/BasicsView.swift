@@ -75,7 +75,7 @@ private extension BasicsView {
                     .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                 
                 Text(animationTitle)
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.semibold)
             }
             .frame(width: 250, height: 250)

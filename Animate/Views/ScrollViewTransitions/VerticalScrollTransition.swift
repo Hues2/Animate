@@ -39,7 +39,7 @@ private extension VerticalScrollTransition {
                 .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
             
             Text("Random Text")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.bold)
         }
     }
