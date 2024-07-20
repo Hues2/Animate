@@ -16,7 +16,7 @@ struct BasicsView: View {
     @State private var animationDuration : CGFloat = 1.2
     
     var body: some View {
-        VStack(spacing: 100) {
+        VStack(spacing: 80) {
             HStack(spacing: 32) {
                 section(color: .green,
                         animationTitle: "Linear",
@@ -50,10 +50,18 @@ struct BasicsView: View {
             
             VStack {
                 Text("Animation Duration: \(String(format: "%.1f", animationDuration))s")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .contentTransition(.numericText())
                     .animation(.smooth, value: animationDuration)
-                Slider(value: $animationDuration, in: 0.2...2, step: 0.2)                    
-                    .frame(width: 300)
+                Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
+            }
+            .frame(width: 300)
+            .padding(32)
+            .overlay {
+                RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
+                    .stroke(.pink)
+                    .shadow(color: .black, radius: 4)
             }
             
         }
