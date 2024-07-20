@@ -23,7 +23,7 @@ struct KeyFramesView: View {
     private let trashRotationAmount : CGFloat = 360
     
     var body: some View {
-        VStack {
+        VStack(spacing: 40) {
             HStack(spacing: 0) {
                 basketball
                     .frame(maxWidth: .infinity)
@@ -37,7 +37,10 @@ struct KeyFramesView: View {
                     .frame(maxWidth: .infinity)
             }
             .frame(maxWidth: .infinity)
+            
             Divider()
+            
+            hint
         }
         .frame(maxWidth: .infinity)
     }
@@ -50,6 +53,28 @@ private extension KeyFramesView {
             .symbolVariant(.fill)
             .foregroundStyle(color)
             .frame(width: 100, height: 100)
+    }
+    
+    var hint : some View {
+        HStack {
+            Text("Tap on the icons")
+                .foregroundStyle(.primary)
+            Image(systemName: "hand.tap")
+                .foregroundStyle(.secondary)
+                .keyframeAnimator(initialValue: AnimatableValues(),
+                                  repeating: true) { content, value in
+                    content
+                        .scaleEffect(value.scale)
+                } keyframes: { _ in
+                    KeyframeTrack(\.scale) {
+                        CubicKeyframe(0.8, duration: 0.2)
+                        CubicKeyframe(1, duration: 0.5)
+                        CubicKeyframe(1, duration: 2)
+                    }
+                }
+
+        }
+        .font(.title)
     }
 }
 
