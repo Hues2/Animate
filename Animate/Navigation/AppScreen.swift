@@ -12,6 +12,8 @@ enum AppScreen : String, Identifiable, Hashable, CaseIterable {
     case transitions
     case scrollTransitions
     case matchedGeometry
+    case keyFrames
+    case phaseAnimators
     
     var id : String { self.rawValue }
     
@@ -21,6 +23,8 @@ enum AppScreen : String, Identifiable, Hashable, CaseIterable {
         case .transitions: return "Transitions"
         case .scrollTransitions: return "ScrollView Transitions"
         case .matchedGeometry: return "Matched Geometry Effect"
+        case .keyFrames: return "Key Frames"
+        case .phaseAnimators: return "Phase Animators"
         }
     }
     
@@ -35,6 +39,10 @@ enum AppScreen : String, Identifiable, Hashable, CaseIterable {
             ScrollTransitionsView()
         case .matchedGeometry:
             MatchedGeometryView()
+        case .keyFrames:
+            KeyFramesView()
+        case .phaseAnimators:
+            PhaseAnimatorsView()
         }
     }
 }

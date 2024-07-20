@@ -11,6 +11,8 @@
 		2E295E572C4ACF1500C41F03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E295E562C4ACF1500C41F03 /* ContentView.swift */; };
 		2E295E592C4ACF1600C41F03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E295E582C4ACF1600C41F03 /* Assets.xcassets */; };
 		2E295E5C2C4ACF1600C41F03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E295E5B2C4ACF1600C41F03 /* Preview Assets.xcassets */; };
+		2E624ACA2C4C377700FCFDDF /* KeyFramesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E624AC92C4C377700FCFDDF /* KeyFramesView.swift */; };
+		2E624ACD2C4C556E00FCFDDF /* PhaseAnimatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E624ACC2C4C556E00FCFDDF /* PhaseAnimatorsView.swift */; };
 		2EB724A22C4AD2E50067487F /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724A12C4AD2E50067487F /* AppNavigationView.swift */; };
 		2EB724A52C4AD3580067487F /* AppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724A42C4AD3580067487F /* AppScreen.swift */; };
 		2EB724A72C4AD3870067487F /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724A62C4AD3870067487F /* SideBarView.swift */; };
@@ -31,6 +33,8 @@
 		2E295E582C4ACF1600C41F03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E295E5B2C4ACF1600C41F03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E295E5D2C4ACF1600C41F03 /* Animate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Animate.entitlements; sourceTree = "<group>"; };
+		2E624AC92C4C377700FCFDDF /* KeyFramesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFramesView.swift; sourceTree = "<group>"; };
+		2E624ACC2C4C556E00FCFDDF /* PhaseAnimatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseAnimatorsView.swift; sourceTree = "<group>"; };
 		2EB724A12C4AD2E50067487F /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
 		2EB724A42C4AD3580067487F /* AppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreen.swift; sourceTree = "<group>"; };
 		2EB724A62C4AD3870067487F /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
@@ -101,8 +105,26 @@
 				2EB724BB2C4B29F60067487F /* Transitions */,
 				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
 				2EB724B82C4B04750067487F /* MatchedGeometry */,
+				2E624AC82C4C376300FCFDDF /* KeyFrames */,
+				2E624ACB2C4C555900FCFDDF /* PhaseAnimators */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2E624AC82C4C376300FCFDDF /* KeyFrames */ = {
+			isa = PBXGroup;
+			children = (
+				2E624AC92C4C377700FCFDDF /* KeyFramesView.swift */,
+			);
+			path = KeyFrames;
+			sourceTree = "<group>";
+		};
+		2E624ACB2C4C555900FCFDDF /* PhaseAnimators */ = {
+			isa = PBXGroup;
+			children = (
+				2E624ACC2C4C556E00FCFDDF /* PhaseAnimatorsView.swift */,
+			);
+			path = PhaseAnimators;
 			sourceTree = "<group>";
 		};
 		2EB724A32C4AD3420067487F /* Navigation */ = {
@@ -230,6 +252,7 @@
 			files = (
 				2E295E572C4ACF1500C41F03 /* ContentView.swift in Sources */,
 				2EB724B72C4AF8810067487F /* Constants.swift in Sources */,
+				2E624ACD2C4C556E00FCFDDF /* PhaseAnimatorsView.swift in Sources */,
 				2EB724B32C4AF14D0067487F /* ScrollTransitionsView.swift in Sources */,
 				2EB724AE2C4AE2800067487F /* PlainScalingButtonStyle.swift in Sources */,
 				2EB724AA2C4ADD580067487F /* BasicsView.swift in Sources */,
@@ -240,6 +263,7 @@
 				2EB724B12C4AEFD30067487F /* HorizontalScrollTransition.swift in Sources */,
 				2EB724BA2C4B049B0067487F /* MatchedGeometryView.swift in Sources */,
 				2EB724A52C4AD3580067487F /* AppScreen.swift in Sources */,
+				2E624ACA2C4C377700FCFDDF /* KeyFramesView.swift in Sources */,
 				2EB724B52C4AF2EA0067487F /* VerticalScrollTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

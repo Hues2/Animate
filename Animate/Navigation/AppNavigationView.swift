@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppNavigationView: View {
-    @State private var selectedAppScreen : AppScreen = .transitions
+    @State private var selectedAppScreen : AppScreen = .keyFrames
     
     var body: some View {
         NavigationSplitView {

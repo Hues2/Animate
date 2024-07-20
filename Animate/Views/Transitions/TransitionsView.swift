@@ -128,17 +128,18 @@ private extension TransitionsView {
                 if show.wrappedValue {
                     ZStack {
                         color
-                            .frame(width: 240, height: 240)
+                            .frame(width: 200, height: 200)
                             .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                         
                         Text(transitionTitle)
                             .font(.title)
                             .fontWeight(.semibold)
+                            .padding(2)
                     }
                     .transition(transition)
                 }
             }
-            .frame(width: 250, height: 250)
+            .frame(width: 200, height: 200)
             
             Button {
                 withAnimation(animationType.animation(withDuration: animationDuration)) {
@@ -148,7 +149,7 @@ private extension TransitionsView {
                 Text(show.wrappedValue ? "Hide" : "Show")
                     .font(.title3)
                     .padding(12)
-                    .frame(width: 250)
+                    .frame(width: 200)
                     .background(.clear)
                     .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                     .overlay {

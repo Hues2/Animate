@@ -13,6 +13,7 @@ struct SideBarView: View {
     
     var body: some View {
         list
+            .frame(minWidth: 200)
     }
 }
 
