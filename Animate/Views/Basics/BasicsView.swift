@@ -12,7 +12,7 @@ struct BasicsView: View {
     @State private var showPink : Bool = true
     @State private var showBlue : Bool = true
     @State private var showOrange : Bool = true
-    @State private var showYellow : Bool = true
+    @State private var showIndigo : Bool = true
     @State private var animationDuration : CGFloat = 1.2
     
     var body: some View {
@@ -40,12 +40,12 @@ struct BasicsView: View {
                         animation: .bouncy(duration: animationDuration),
                         show: $showOrange)
                 
-                section(color: .yellow,
+                section(color: .indigo,
                         animationTitle: "Spring",
                         // Response --> How stiff the spring is. The lower the value, the faster the bounces
                         // Damping Fraction --> How much the animation should resist bouncing back and forth. Lower the value, the more it bounces back and forth
                         animation: .spring(response: animationDuration, dampingFraction: 0.5),
-                        show: $showYellow)
+                        show: $showIndigo)
             }
             
             VStack {

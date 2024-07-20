@@ -36,7 +36,7 @@ struct TransitionsView: View {
     @State private var showPink : Bool = true
     @State private var showBlue : Bool = true
     @State private var showOrange : Bool = true
-    @State private var showYellow : Bool = true
+    @State private var showIndigo : Bool = true
     @State private var showPurple : Bool = true
     @State private var animationType : AnimationType = .easeInOut
     @State private var animationDuration : CGFloat = 1.2
@@ -64,10 +64,10 @@ struct TransitionsView: View {
                         transition: .push(from: .bottom),
                         show: $showOrange)
                 
-                section(color: .yellow,
+                section(color: .indigo,
                         transitionTitle: "Asymetric - Scale, Opacity",
                         transition: .asymmetric(insertion: .scale, removal: .opacity),
-                        show: $showYellow)
+                        show: $showIndigo)
                 
                 section(color: .purple,
                         transitionTitle: "Combination - Opacity, Scale, Offset",
