@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct AppNavigationView: View {
-    @State private var selectedAppScreen : AppScreen = .scrollTransitions
+    @State private var selectedAppScreen : AppScreen = .transitions
     
     var body: some View {
         NavigationSplitView {
             SideBarView(selectedAppScreen: $selectedAppScreen)
         } detail: {
-            switch selectedAppScreen {
-            case .basics:
-                BasicsView()
-            case .scrollTransitions:
-                ScrollTransitionsView()
-            case .matchedGeometry:
-                MatchedGeometryView()
-            }
+            selectedAppScreen.detailView
         }
     }
 }

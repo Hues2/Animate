@@ -21,6 +21,7 @@
 		2EB724B52C4AF2EA0067487F /* VerticalScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B42C4AF2EA0067487F /* VerticalScrollTransition.swift */; };
 		2EB724B72C4AF8810067487F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B62C4AF8810067487F /* Constants.swift */; };
 		2EB724BA2C4B049B0067487F /* MatchedGeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */; };
+		2EB724BF2C4B2A230067487F /* TransitionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724BE2C4B2A230067487F /* TransitionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		2EB724B42C4AF2EA0067487F /* VerticalScrollTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScrollTransition.swift; sourceTree = "<group>"; };
 		2EB724B62C4AF8810067487F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryView.swift; sourceTree = "<group>"; };
+		2EB724BE2C4B2A230067487F /* TransitionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB724A82C4ADC8F0067487F /* Basics */,
+				2EB724BB2C4B29F60067487F /* Transitions */,
 				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
 				2EB724B82C4B04750067487F /* MatchedGeometry */,
 			);
@@ -145,6 +148,14 @@
 				2EB724B92C4B049B0067487F /* MatchedGeometryView.swift */,
 			);
 			path = MatchedGeometry;
+			sourceTree = "<group>";
+		};
+		2EB724BB2C4B29F60067487F /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				2EB724BE2C4B2A230067487F /* TransitionsView.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +234,7 @@
 				2EB724AE2C4AE2800067487F /* PlainScalingButtonStyle.swift in Sources */,
 				2EB724AA2C4ADD580067487F /* BasicsView.swift in Sources */,
 				2E295E552C4ACF1500C41F03 /* AnimateApp.swift in Sources */,
+				2EB724BF2C4B2A230067487F /* TransitionsView.swift in Sources */,
 				2EB724A22C4AD2E50067487F /* AppNavigationView.swift in Sources */,
 				2EB724A72C4AD3870067487F /* SideBarView.swift in Sources */,
 				2EB724B12C4AEFD30067487F /* HorizontalScrollTransition.swift in Sources */,

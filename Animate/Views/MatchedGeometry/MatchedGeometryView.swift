@@ -40,16 +40,16 @@ private extension MatchedGeometryView {
                 .font(.title)
                 .fontWeight(.ultraLight)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                HStack {
-                    ForEach(selectedColors) { color in
-                        card(color, 100) {
-                            self.selectedColors.removeAll(where: { $0 == color })
-                        }
+            
+            HStack(spacing: 16) {
+                ForEach(selectedColors) { color in
+                    card(color, 100) {
+                        self.selectedColors.removeAll(where: { $0 == color })
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 120)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 120)
         }
         .padding(24)
     }

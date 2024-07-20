@@ -17,7 +17,7 @@ struct VerticalScrollTransition: View {
                     card(color)
                         .scrollTransition { view, phase in
                             view
-                                .opacity(phase.isIdentity ? 1 : 0.8)
+                                .opacity(phase.isIdentity ? 1 : 0.6)
                                 .rotation3DEffect(.degrees(phase.isIdentity ? 0 : 45), axis: (x: 0, y: 1, z: 0))
                                 .rotationEffect(.degrees(phase.isIdentity ? 0 : 15))
                                 .offset(x: phase.value > 0 ? 150 : -150)

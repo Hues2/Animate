@@ -17,7 +17,7 @@ struct BasicsView: View {
     
     var body: some View {
         VStack(spacing: 100) {
-            HStack(spacing: 20) {
+            HStack(spacing: 32) {
                 section(color: .green,
                         animationTitle: "Linear",
                         animation: .linear(duration: animationDuration),
@@ -52,7 +52,7 @@ struct BasicsView: View {
                 Text("Animation Duration: \(String(format: "%.1f", animationDuration))s")
                     .contentTransition(.numericText())
                     .animation(.smooth, value: animationDuration)
-                Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
+                Slider(value: $animationDuration, in: 0.2...2, step: 0.2)                    
                     .frame(width: 300)
             }
             
@@ -71,14 +71,14 @@ private extension BasicsView {
         VStack(spacing: 16) {
             ZStack {
                 color
-                    .frame(width: 200, height: 200)
+                    .frame(width: 240, height: 240)
                     .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                 
                 Text(animationTitle)
-                    .font(.title3)
+                    .font(.title2)
                     .fontWeight(.semibold)
             }
-            .frame(width: 200, height: 200)
+            .frame(width: 250, height: 250)
             .scaleEffect(show.wrappedValue ? 1 : 0)
             .rotationEffect(Angle(degrees: show.wrappedValue ? 0 : 270))
             
@@ -88,9 +88,9 @@ private extension BasicsView {
                 }
             } label: {
                 Text(show.wrappedValue ? "Hide" : "Show")
-                    .font(.headline)
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
+                    .font(.title3)
+                    .padding(12)
+                    .frame(width: 250)
                     .background(.clear)
                     .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                     .overlay {
