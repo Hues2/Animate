@@ -106,7 +106,7 @@ private extension KeyFramesView {
                 }
             
             Text("Basketball")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.ultraLight)
         }
     }
@@ -145,7 +145,7 @@ private extension KeyFramesView {
                 }
             
             Text("Checkmark")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.ultraLight)
         }
     }
@@ -175,7 +175,7 @@ private extension KeyFramesView {
                 }
             
             Text("Heart")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.ultraLight)
         }
     }
@@ -220,7 +220,7 @@ private extension KeyFramesView {
                 }
             
             Text("Warning")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.ultraLight)
         }
     }
@@ -244,27 +244,35 @@ private extension KeyFramesView {
                     }
                     
                     KeyframeTrack(\.rotationDegrees) {
-                        CubicKeyframe(0, duration: 0.2) // 1
+                        CubicKeyframe(0, duration: 0.2) // 1 --> yOffset is animating to -100
+                        
                         CubicKeyframe(0, duration: 0.2) // 2
                         CubicKeyframe(45, duration: 0.2) // 3
                         CubicKeyframe(0, duration: 0.2) // 4
-                        CubicKeyframe(0, duration: 0.2) // 5
+                        
+                        CubicKeyframe(0, duration: 0.2) // 5 --> Back to middle
+                        
                         CubicKeyframe(0, duration: 0.2) // 6
                         CubicKeyframe(-45, duration: 0.2) // 7
                         CubicKeyframe(0, duration: 0.2) // 8
-                        CubicKeyframe(0, duration: 0.2) // 9
+                        
+                        CubicKeyframe(0, duration: 0.2) // 9 --> xOffset is animating to 0
                     }
                     
                     KeyframeTrack(\.xOffset) {
-                        CubicKeyframe(0, duration: 0.2) // 1
-                        CubicKeyframe(100, duration: 0.2) // 2
-                        CubicKeyframe(100, duration: 0.2) // 3
-                        CubicKeyframe(100, duration: 0.2) // 4
-                        CubicKeyframe(0, duration: 0.2) // 5
-                        CubicKeyframe(-100, duration: 0.2) // 6
-                        CubicKeyframe(-100, duration: 0.2) // 7
-                        CubicKeyframe(-100, duration: 0.2) // 8
-                        CubicKeyframe(0, duration: 0.2) // 9
+                        CubicKeyframe(0, duration: 0.2) // 1 --> yOffset is animating to -100
+                        
+                        CubicKeyframe(100, duration: 0.2) // 2 --> Move to 100
+                        CubicKeyframe(100, duration: 0.2) // 3 --> Stay at 100 whilst the rotation effect is changing to 45
+                        CubicKeyframe(100, duration: 0.2) // 4 --> Stay at 100 whilst the rotation effect is changing back to 0
+                        
+                        CubicKeyframe(0, duration: 0.2) // 5 --> Back to middle
+                        
+                        CubicKeyframe(-100, duration: 0.2) // 6 --> Move to -100
+                        CubicKeyframe(-100, duration: 0.2) // 7 --> Stay at -100 whilst the rotation effect is changing to -45
+                        CubicKeyframe(-100, duration: 0.2) // 8 --> Stay at -100 whilst the rotation effect is changing back to 0
+                        
+                        CubicKeyframe(0, duration: 0.2) // 9 --> Move back to the middle
                     }
                 }
                 .onTapGesture {
@@ -272,7 +280,7 @@ private extension KeyFramesView {
                 }
             
             Text("Trash")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.ultraLight)
         }
     }
