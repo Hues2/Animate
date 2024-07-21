@@ -44,7 +44,7 @@ struct AnimationControllerView: View {
                 Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
             }
         }
-        .frame(width: 300)
+        .frame(width: 400)
         .padding(32)
         .overlay {
             RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)

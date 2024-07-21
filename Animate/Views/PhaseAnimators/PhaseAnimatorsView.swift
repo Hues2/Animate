@@ -10,21 +10,20 @@ import SwiftUI
 struct PhaseAnimatorsView: View {
     @State private var animationType : AnimationType = .easeInOut
     @State private var animationDuration : CGFloat = 1.2
-
     
     var body: some View {
         VStack(spacing: 80) {
-            HStack(spacing: 44) {
+            HStack {
                 card(.green,
-                     "Scale",
                      GreenPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
                 
                 card(.pink,
-                     "Scale In & Move",
                      PinkPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
                 
+                card(.orange,
+                     OrangePhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
+                
                 card(.indigo,
-                     "Scale In & Move",
                      IndigoPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -41,17 +40,19 @@ struct PhaseAnimatorsView: View {
 }
 
 private extension PhaseAnimatorsView {
-    func card(_ color : Color, _ title : String, _ viewModifier : some ViewModifier) -> some View {
-        VStack {
-            color
-                .frame(width: 200, height: 200)
-                .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
-                .modifier(viewModifier)
-            
-            Text(title)
-                .font(.title)
-                .fontWeight(.ultraLight)
-        }
+    func card(_ color : Color, _ viewModifier : some ViewModifier) -> some View {
+        color
+            .frame(width: 200, height: 200)
+            .overlay(alignment: .topTrailing) {
+                Image(systemName: "hand.tap")
+                    .font(.title2)
+                    .fontWeight(.light)
+                    .foregroundStyle(.primary)
+                    .padding()
+            }
+            .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
+            .modifier(viewModifier)
+            .frame(maxWidth: .infinity)
     }
 }
 
@@ -113,6 +114,16 @@ private extension PhaseAnimatorsView {
                 case .scaleOut: 0
                 }
             }
+            
+            var blur : CGFloat {
+                switch self {
+                case .initial: 0
+                case .scaleIn: 0
+                case .moveLeft: 4
+                case .moveRight: 4
+                case .scaleOut: 0
+                }
+            }
         }
         
         let animation : Animation
@@ -128,6 +139,64 @@ private extension PhaseAnimatorsView {
                     content
                         .scaleEffect(phase.scale)
                         .offset(x: phase.xOffset)
+                        .blur(radius: phase.blur)
+                        .disabled(phase != .initial)
+                } animation: { _ in animation }
+        }
+    }
+}
+
+// MARK: Orange
+private extension PhaseAnimatorsView {
+    struct OrangePhaseAnimatorModifier : ViewModifier {
+        private enum OrangeAnimationPhase: CaseIterable {
+            case initial, first, second, third, end
+            
+            var scale : CGFloat {
+                switch self {
+                case .initial: 1
+                case .first: 1.5
+                case .second: 1
+                case .third: 1.5
+                case .end: 1
+                }
+            }
+            
+            var yOffset : CGFloat {
+                switch self {
+                case .initial: 0
+                case .first: 100
+                case .second: 0
+                case .third: -100
+                case .end: 0
+                }
+            }
+            
+            var degrees : CGFloat {
+                switch self {
+                case .initial: 0
+                case .first: 360
+                case .second: 0
+                case .third: -360
+                case .end: 0
+                }
+            }
+        }
+        
+        let animation : Animation
+        @State private var toggle : Bool = false
+        
+        func body(content: Content) -> some View {
+            content
+                .onTapGesture {
+                    toggle.toggle()
+                }
+                .phaseAnimator(OrangeAnimationPhase.allCases,
+                               trigger: toggle) { content, phase in
+                    content
+                        .scaleEffect(phase.scale)
+                        .offset(y: phase.yOffset)
+                        .rotationEffect(.init(degrees: phase.degrees))
                         .disabled(phase != .initial)
                 } animation: { _ in animation }
         }
@@ -185,6 +254,19 @@ private extension PhaseAnimatorsView {
                 case .scaleDownAndMoveDown: 0
                 }
             }
+            
+            var degrees : CGFloat {
+                switch self {
+                case .initial: 0
+                case .scaleInAndMoveUp: 0
+                case .moveLeft: 10
+                case .moveDown: 10
+                case .moveRight: -10
+                case .moveUp: -10
+                case .moveCenter: 0
+                case .scaleDownAndMoveDown: 0
+                }
+            }
         }
         
         let animation : Animation
@@ -200,6 +282,10 @@ private extension PhaseAnimatorsView {
                     content
                         .scaleEffect(phase.scale)
                         .offset(x: phase.xOffset, y: phase.yOffset)
+                        .rotation3DEffect(
+                            .init(degrees: phase.degrees),
+                            axis: (x: 0.0, y: 1.0, z: 0.0)
+                        )
                         .disabled(phase != .initial)
                 } animation: { _ in animation }
         }
