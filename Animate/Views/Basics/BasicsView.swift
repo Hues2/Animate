@@ -48,15 +48,16 @@ struct BasicsView: View {
                         show: $showIndigo)
             }
             .frame(maxHeight: .infinity)
+            .padding(.horizontal, 24)
             
             Divider()
             
             AnimationControllerView(animationType: .constant(nil),
                                     animationDuration: $animationDuration)
+            .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
-        .padding(.horizontal, 24)
         .padding(.vertical, 80)
     }
 }

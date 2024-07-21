@@ -51,15 +51,16 @@ struct TransitionsView: View {
                         show: $showPurple)
             }
             .frame(maxHeight: .infinity)
+            .padding(.horizontal, 24)
             
             Divider()
             
             AnimationControllerView(animationType: $animationType.optional,
                                     animationDuration: $animationDuration)
+            .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
-        .padding(.horizontal, 24)
         .padding(.vertical, 80)
     }
 }

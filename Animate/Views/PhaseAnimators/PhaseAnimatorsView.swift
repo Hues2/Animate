@@ -27,14 +27,15 @@ struct PhaseAnimatorsView: View {
                      IndigoPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal, 24)
             
             Divider()
             
             AnimationControllerView(animationType: $animationType.optional,
                                     animationDuration: $animationDuration)
+            .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 24)
         .padding(.vertical, 80)
     }
 }
