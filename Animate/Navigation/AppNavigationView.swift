@@ -13,6 +13,7 @@ struct AppNavigationView: View {
     var body: some View {
         NavigationSplitView {
             SideBarView(selectedAppScreen: $selectedAppScreen)
+                .frame(minWidth: 280)
         } detail: {
             ScrollView {
                 VStack(spacing: 0) {
