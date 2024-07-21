@@ -75,6 +75,7 @@ private extension KeyFramesView {
 
         }
         .font(.title)
+        .fontWeight(.ultraLight)
     }
 }
 
