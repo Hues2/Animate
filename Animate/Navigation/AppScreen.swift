@@ -10,8 +10,8 @@ import SwiftUI
 enum AppScreen : String, Identifiable, Hashable, CaseIterable {
     case basics
     case transitions
-    case scrollTransitions
     case matchedGeometry
+    case scrollTransitions
     case keyFrames
     case phaseAnimators
     
@@ -21,10 +21,10 @@ enum AppScreen : String, Identifiable, Hashable, CaseIterable {
         switch self {
         case .basics: return "Basics"
         case .transitions: return "Transitions"
-        case .scrollTransitions: return "ScrollView Transitions"
         case .matchedGeometry: return "Matched Geometry Effect"
-        case .keyFrames: return "Key Frames"
-        case .phaseAnimators: return "Phase Animators"
+        case .scrollTransitions: return "ScrollView Transitions (iOS 17.0+)"
+        case .keyFrames: return "Key Frames (iOS 17.0+)"
+        case .phaseAnimators: return "Phase Animators (iOS 17.0+)"
         }
     }
     
@@ -35,10 +35,10 @@ enum AppScreen : String, Identifiable, Hashable, CaseIterable {
             BasicsView()
         case .transitions:
             TransitionsView()
-        case .scrollTransitions:
-            ScrollTransitionsView()
         case .matchedGeometry:
             MatchedGeometryView()
+        case .scrollTransitions:
+            ScrollTransitionsView()
         case .keyFrames:
             KeyFramesView()
         case .phaseAnimators:

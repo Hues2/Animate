@@ -106,7 +106,8 @@ private extension KeyFramesView {
                 }
             
             Text("Basketball")
-                .font(.headline)
+                .font(.title2)
+                .fontWeight(.ultraLight)
         }
     }
 }
@@ -144,7 +145,8 @@ private extension KeyFramesView {
                 }
             
             Text("Checkmark")
-                .font(.headline)
+                .font(.title2)
+                .fontWeight(.ultraLight)
         }
     }
 }
@@ -173,7 +175,8 @@ private extension KeyFramesView {
                 }
             
             Text("Heart")
-                .font(.headline)
+                .font(.title2)
+                .fontWeight(.ultraLight)
         }
     }
 }
@@ -217,7 +220,8 @@ private extension KeyFramesView {
                 }
             
             Text("Warning")
-                .font(.headline)
+                .font(.title2)
+                .fontWeight(.ultraLight)
         }
     }
 }
@@ -267,8 +271,9 @@ private extension KeyFramesView {
                     trashToggle.toggle()
                 }
             
-            Text("Warning")
-                .font(.headline)
+            Text("Trash")
+                .font(.title2)
+                .fontWeight(.ultraLight)
         }
     }
 }

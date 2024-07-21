@@ -47,6 +47,6 @@ private extension VerticalScrollTransition {
 
 #Preview {
     VerticalScrollTransition(colors: [.green, .pink, .blue, .orange, .yellow, .red, .purple,
-                                      .cyan, .indigo, .mint, .white, .black, .green, .pink,
+                                      .cyan, .indigo, .mint, .black, .green, .pink,
                                       .blue, .orange, .yellow, .red, .purple])
 }

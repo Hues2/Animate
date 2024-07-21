@@ -45,5 +45,8 @@ private extension HorizontalScrollTransition {
 }
 
 #Preview {
-    HorizontalScrollTransition(colors: [.green, .pink, .blue, .orange, .yellow, .red, .purple, .cyan, .indigo, .mint, .white, .black, .green, .pink, .blue, .orange, .yellow, .red, .purple])
+    HorizontalScrollTransition(colors: [.green, .pink, .blue, .orange, .yellow,
+                                        .red, .purple, .cyan, .indigo, .mint,
+                                        .black, .green, .pink, .blue, .orange,
+                                        .yellow, .red, .purple])
 }
