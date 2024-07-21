@@ -17,7 +17,7 @@ struct BasicsView: View {
     
     var body: some View {
         VStack(spacing: 80) {
-            HStack(spacing: 32) {
+            HStack {
                 section(color: .green,
                         animationTitle: "Linear",
                         animation: .linear(duration: animationDuration),
@@ -115,6 +115,7 @@ private extension BasicsView {
             }
             .buttonStyle(PlainScalingButtonStyle())
         }
+        .frame(maxWidth: .infinity)
     }
 }
 

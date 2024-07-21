@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct PhaseAnimatorsView: View {
+    @State private var animation : Animation = .smooth
+    
     var body: some View {
-        card(.green, "Scale", GreenPhaseAnimatorModifier())
+        VStack {
+            HStack(spacing: 44) {
+                card(.green,
+                     "Scale",
+                     GreenPhaseAnimatorModifier(animation: animation))
+                
+                card(.pink,
+                     "Scale In & Move",
+                     PinkPhaseAnimatorModifier(animation: animation))
+                
+                card(.indigo,
+                     "Scale In & Move",
+                     IndigoPhaseAnimatorModifier(animation: animation))
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -17,7 +35,7 @@ private extension PhaseAnimatorsView {
     func card(_ color : Color, _ title : String, _ viewModifier : some ViewModifier) -> some View {
         VStack {
             color
-                .frame(width: 150, height: 150)
+                .frame(width: 200, height: 200)
                 .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
                 .modifier(viewModifier)
             
@@ -28,35 +46,153 @@ private extension PhaseAnimatorsView {
     }
 }
 
+// MARK: Green
 private extension PhaseAnimatorsView {
     struct GreenPhaseAnimatorModifier : ViewModifier {
-        enum GreenAnimationPhase: CaseIterable {
-            case start, middle, end
+        private enum GreenAnimationPhase: CaseIterable {
+            case initial, middle, end
             
             var scale : CGFloat {
                 switch self {
-                case .start:
-                    1
-                case .middle:
-                    1.5
-                case .end:
-                    1
+                case .initial: 1
+                case .middle: 1.5
+                case .end: 1
                 }
             }
         }
         
-        @State private var greenToggle : Bool = false
+        let animation : Animation
+        @State private var toggle : Bool = false
         
         func body(content: Content) -> some View {
             content
+                .onTapGesture {
+                    toggle.toggle()
+                }
                 .phaseAnimator(GreenAnimationPhase.allCases,
-                               trigger: greenToggle) { content, phase in
+                               trigger: toggle) { content, phase in
                     content
                         .scaleEffect(phase.scale)
+                        .disabled(phase != .initial)
+                } animation: { _ in animation }
+        }
+    }
+}
+
+// MARK: Pink
+private extension PhaseAnimatorsView {
+    struct PinkPhaseAnimatorModifier : ViewModifier {
+        private enum PinkAnimationPhase: CaseIterable {
+            case initial, scaleIn, moveLeft, moveRight, scaleOut
+            
+            var scale : CGFloat {
+                switch self {
+                case .initial: 1
+                case .scaleIn: 1.5
+                case .moveLeft: 1.5
+                case .moveRight: 1.5
+                case .scaleOut: 1
                 }
-                               .onTapGesture {
-                                   greenToggle.toggle()
-                               }
+            }
+            
+            var xOffset : CGFloat {
+                switch self {
+                case .initial: 0
+                case .scaleIn: 0
+                case .moveLeft: -100
+                case .moveRight: 100
+                case .scaleOut: 0
+                }
+            }
+        }
+        
+        let animation : Animation
+        @State private var toggle : Bool = false
+        
+        func body(content: Content) -> some View {
+            content
+                .onTapGesture {
+                    toggle.toggle()
+                }
+                .phaseAnimator(PinkAnimationPhase.allCases,
+                               trigger: toggle) { content, phase in
+                    content
+                        .scaleEffect(phase.scale)
+                        .offset(x: phase.xOffset)
+                        .disabled(phase != .initial)
+                } animation: { _ in animation }
+        }
+    }
+}
+
+// MARK: Indigo
+private extension PhaseAnimatorsView {
+    struct IndigoPhaseAnimatorModifier : ViewModifier {
+        private enum IndigoAnimationPhase: CaseIterable {
+            case initial
+            case scaleInAndMoveUp
+            case moveLeft
+            case moveDown
+            case moveRight
+            case moveUp
+            case moveCenter
+            case scaleDownAndMoveDown
+            
+            var scale : CGFloat {
+                switch self {
+                case .initial: 1
+                case .scaleInAndMoveUp: 1.5
+                case .moveLeft: 1.5
+                case .moveDown: 1.5
+                case .moveRight: 1.5
+                case .moveUp: 1.5
+                case .moveCenter: 1.5
+                case .scaleDownAndMoveDown: 1
+                }
+            }
+            
+            var xOffset : CGFloat {
+                switch self {
+                case .initial: 0
+                case .scaleInAndMoveUp: 0
+                case .moveLeft: -100
+                case .moveDown: -100
+                case .moveRight: 100
+                case .moveUp: 100
+                case .moveCenter: 0
+                case .scaleDownAndMoveDown: 0
+                }
+            }
+            
+            var yOffset : CGFloat {
+                switch self {
+                case .initial: 0
+                case .scaleInAndMoveUp: -100
+                case .moveLeft: -100
+                case .moveDown: 100
+                case .moveRight: 100
+                case .moveUp: -100
+                case .moveCenter: -100
+                case .scaleDownAndMoveDown: 0
+                }
+            }
+        }
+        
+        let animation : Animation
+        @State private var toggle : Bool = false
+        
+        func body(content: Content) -> some View {
+            content
+                .onTapGesture {
+                    toggle.toggle()
+                }
+                .phaseAnimator(IndigoAnimationPhase.allCases,
+                               trigger: toggle) { content, phase in
+                    content
+                        .scaleEffect(phase.scale)
+                        .offset(x: phase.xOffset, y: phase.yOffset)
+                        .disabled(phase != .initial)
+                } animation: { _ in animation }
         }
     }
 }

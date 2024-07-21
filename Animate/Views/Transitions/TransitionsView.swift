@@ -43,7 +43,7 @@ struct TransitionsView: View {
     
     var body: some View {
         VStack(spacing: 80) {
-            HStack(spacing: 32) {
+            HStack {
                 section(color: .green,
                         transitionTitle: "Opacity",
                         transition: .opacity,
@@ -167,6 +167,7 @@ private extension TransitionsView {
             }
             .buttonStyle(PlainScalingButtonStyle())
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
