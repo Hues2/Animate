@@ -8,30 +8,6 @@
 import SwiftUI
 
 struct TransitionsView: View {
-    enum AnimationType : String, Identifiable, CaseIterable {
-        case easeInOut, smooth, snappy, bouncy
-        
-        var id : String { self.rawValue }
-        
-        var displayString : String {
-            switch self {
-            case .easeInOut: return "Ease In/Out"
-            case .smooth: return "Smooth"
-            case .snappy: return "Snappy"
-            case .bouncy: return "Bouncy"
-            }
-        }
-        
-        func animation(withDuration duration: Double) -> Animation {
-            switch self {
-            case .easeInOut: return .easeInOut(duration: duration)
-            case .smooth: return .linear(duration: duration)
-            case .snappy: return .interactiveSpring(response: duration, dampingFraction: 0.5, blendDuration: 0.5)
-            case .bouncy: return .spring(response: duration, dampingFraction: 0.5, blendDuration: 0.5)
-            }
-        }
-    }
-    
     @State private var showGreen : Bool = true
     @State private var showPink : Bool = true
     @State private var showBlue : Bool = true
@@ -74,12 +50,17 @@ struct TransitionsView: View {
                         transition: .opacity.combined(with: .scale).combined(with: .offset(x: 100, y: -100)),
                         show: $showPurple)
             }
+            .frame(maxHeight: .infinity)
             
-            controls
+            Divider()
+            
+            AnimationControllerView(animationType: $animationType.optional,
+                                    animationDuration: $animationDuration)
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
         .padding(.horizontal, 24)
+        .padding(.vertical, 80)
     }
 }
 

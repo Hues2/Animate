@@ -8,26 +8,35 @@
 import SwiftUI
 
 struct PhaseAnimatorsView: View {
-    @State private var animation : Animation = .smooth
+    @State private var animationType : AnimationType = .easeInOut
+    @State private var animationDuration : CGFloat = 1.2
+
     
     var body: some View {
-        VStack {
+        VStack(spacing: 80) {
             HStack(spacing: 44) {
                 card(.green,
                      "Scale",
-                     GreenPhaseAnimatorModifier(animation: animation))
+                     GreenPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
                 
                 card(.pink,
                      "Scale In & Move",
-                     PinkPhaseAnimatorModifier(animation: animation))
+                     PinkPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
                 
                 card(.indigo,
                      "Scale In & Move",
-                     IndigoPhaseAnimatorModifier(animation: animation))
+                     IndigoPhaseAnimatorModifier(animation: animationType.animation(withDuration: animationDuration)))
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            Divider()
+            
+            AnimationControllerView(animationType: $animationType.optional,
+                                    animationDuration: $animationDuration)
         }
         .frame(maxWidth: .infinity)
+        .padding(.horizontal, 24)
+        .padding(.vertical, 80)
     }
 }
 

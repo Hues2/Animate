@@ -47,33 +47,17 @@ struct BasicsView: View {
                         animation: .spring(response: animationDuration, dampingFraction: 0.5),
                         show: $showIndigo)
             }
+            .frame(maxHeight: .infinity)
             
-            controls
+            Divider()
+            
+            AnimationControllerView(animationType: .constant(nil),
+                                    animationDuration: $animationDuration)
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: .infinity)
         .padding(.horizontal, 24)
-    }
-}
-
-private extension BasicsView {
-    var controls : some View {
-        VStack {
-            Text("Animation Duration: \(String(format: "%.1f", animationDuration))s")
-                .font(.title2)
-                .fontWeight(.ultraLight)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .contentTransition(.numericText())
-                .animation(.smooth, value: animationDuration)
-            Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
-        }
-        .frame(width: 300)
-        .padding(32)
-        .overlay {
-            RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
-                .stroke(.pink)
-                .shadow(color: .black, radius: 4)
-        }
+        .padding(.vertical, 80)
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E08A5192C4D5AA300186904 /* AnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08A5182C4D5AA300186904 /* AnimationType.swift */; };
+		2E08A51C2C4D5AF300186904 /* AnimationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08A51B2C4D5AF300186904 /* AnimationControllerView.swift */; };
+		2E08A51F2C4D5ED200186904 /* OptionalBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08A51E2C4D5ED200186904 /* OptionalBinding.swift */; };
 		2E295E552C4ACF1500C41F03 /* AnimateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E295E542C4ACF1500C41F03 /* AnimateApp.swift */; };
 		2E295E572C4ACF1500C41F03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E295E562C4ACF1500C41F03 /* ContentView.swift */; };
 		2E295E592C4ACF1600C41F03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E295E582C4ACF1600C41F03 /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E08A5182C4D5AA300186904 /* AnimationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationType.swift; sourceTree = "<group>"; };
+		2E08A51B2C4D5AF300186904 /* AnimationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationControllerView.swift; sourceTree = "<group>"; };
+		2E08A51E2C4D5ED200186904 /* OptionalBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalBinding.swift; sourceTree = "<group>"; };
 		2E295E512C4ACF1500C41F03 /* Animate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E295E542C4ACF1500C41F03 /* AnimateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateApp.swift; sourceTree = "<group>"; };
 		2E295E562C4ACF1500C41F03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E08A51A2C4D5ACF00186904 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2E08A51B2C4D5AF300186904 /* AnimationControllerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2E08A51D2C4D5EC300186904 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2E08A51E2C4D5ED200186904 /* OptionalBinding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2E295E482C4ACF1500C41F03 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +104,7 @@
 				2E295E562C4ACF1500C41F03 /* ContentView.swift */,
 				2EB724A32C4AD3420067487F /* Navigation */,
 				2E295E642C4ACFA300C41F03 /* Views */,
+				2E08A51A2C4D5ACF00186904 /* Components */,
 				2EB724AB2C4AE23C0067487F /* Utils */,
 				2E295E582C4ACF1600C41F03 /* Assets.xcassets */,
 				2E295E5D2C4ACF1600C41F03 /* Animate.entitlements */,
@@ -105,8 +128,8 @@
 				2EB724BB2C4B29F60067487F /* Transitions */,
 				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
 				2EB724B82C4B04750067487F /* MatchedGeometry */,
-				2E624AC82C4C376300FCFDDF /* KeyFrames */,
 				2E624ACB2C4C555900FCFDDF /* PhaseAnimators */,
+				2E624AC82C4C376300FCFDDF /* KeyFrames */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,8 +171,10 @@
 		2EB724AB2C4AE23C0067487F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2E08A51D2C4D5EC300186904 /* Extensions */,
 				2EB724AD2C4AE2800067487F /* PlainScalingButtonStyle.swift */,
 				2EB724B62C4AF8810067487F /* Constants.swift */,
+				2E08A5182C4D5AA300186904 /* AnimationType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -250,11 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E08A5192C4D5AA300186904 /* AnimationType.swift in Sources */,
+				2E08A51F2C4D5ED200186904 /* OptionalBinding.swift in Sources */,
 				2E295E572C4ACF1500C41F03 /* ContentView.swift in Sources */,
 				2EB724B72C4AF8810067487F /* Constants.swift in Sources */,
 				2E624ACD2C4C556E00FCFDDF /* PhaseAnimatorsView.swift in Sources */,
 				2EB724B32C4AF14D0067487F /* ScrollTransitionsView.swift in Sources */,
 				2EB724AE2C4AE2800067487F /* PlainScalingButtonStyle.swift in Sources */,
+				2E08A51C2C4D5AF300186904 /* AnimationControllerView.swift in Sources */,
 				2EB724AA2C4ADD580067487F /* BasicsView.swift in Sources */,
 				2E295E552C4ACF1500C41F03 /* AnimateApp.swift in Sources */,
 				2EB724BF2C4B2A230067487F /* TransitionsView.swift in Sources */,
