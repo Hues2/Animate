@@ -76,12 +76,12 @@ private extension MatchedGeometryView {
         .padding(24)
     }
     
-    func card(_ color : CustomColor, _ size : CGFloat, _ action : @escaping () -> Void) -> some View {
-        color.color
+    func card(_ customColor : CustomColor, _ size : CGFloat, _ action : @escaping () -> Void) -> some View {
+        customColor.color
             .frame(width: size, height: size)
             .clipShape(.rect(cornerRadius: Constants.UI.pillShapeCornerRadius))
             .cornerRadius(10)
-            .matchedGeometryEffect(id: color.id, in: namespace)
+            .matchedGeometryEffect(id: customColor.id, in: namespace)
             .onTapGesture {
                 withAnimation(.smooth) {
                     action()

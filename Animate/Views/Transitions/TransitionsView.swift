@@ -65,8 +65,8 @@ struct TransitionsView: View {
                         show: $showOrange)
                 
                 section(color: .indigo,
-                        transitionTitle: "Asymetric - Scale, Opacity",
-                        transition: .asymmetric(insertion: .scale, removal: .opacity),
+                        transitionTitle: "Asymetric - Scale, Move",
+                        transition: .asymmetric(insertion: .scale, removal: .move(edge: .trailing)),
                         show: $showIndigo)
                 
                 section(color: .purple,
