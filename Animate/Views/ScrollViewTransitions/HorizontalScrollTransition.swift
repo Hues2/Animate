@@ -39,7 +39,7 @@ private extension HorizontalScrollTransition {
             
             Text("Random Text")
                 .font(.title)
-                .fontWeight(.bold)
+                .fontWeight(.ultraLight)
         }
     }
 }

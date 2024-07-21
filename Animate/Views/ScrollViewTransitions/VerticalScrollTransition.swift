@@ -40,7 +40,7 @@ private extension VerticalScrollTransition {
             
             Text("Random Text")
                 .font(.title)
-                .fontWeight(.bold)
+                .fontWeight(.ultraLight)
         }
     }
 }

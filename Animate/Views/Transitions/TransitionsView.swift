@@ -65,48 +65,6 @@ struct TransitionsView: View {
 }
 
 private extension TransitionsView {
-    var controls : some View {
-        VStack(spacing: 40) {
-            VStack {
-                Text("Animation:")
-                    .font(.title2)
-                    .fontWeight(.ultraLight)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                MenuButton(animationType.displayString) {
-                    ForEach(AnimationType.allCases) { animationType in
-                        Button {
-                            withAnimation {
-                                self.animationType = animationType
-                            }
-                        } label: {
-                            Text(animationType.displayString)
-                        }
-                    }
-                }
-            }
-            
-            VStack {
-                Text("Animation Duration: \(String(format: "%.1f", animationDuration))s")
-                    .font(.title2)
-                    .fontWeight(.ultraLight)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .contentTransition(.numericText())
-                    .animation(.smooth, value: animationDuration)
-                Slider(value: $animationDuration, in: 0.2...2, step: 0.2)
-            }
-        }
-        .frame(width: 300)
-        .padding(32)
-        .overlay {
-            RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
-                .stroke(.pink)
-                .shadow(color: .black, radius: 4)
-        }
-    }
-}
-
-private extension TransitionsView {
     func section(color : Color,
                  transitionTitle : String,
                  transition : AnyTransition,
@@ -121,7 +79,7 @@ private extension TransitionsView {
                         
                         Text(transitionTitle)
                             .font(.title)
-                            .fontWeight(.semibold)
+                            .fontWeight(.ultraLight)
                             .padding(2)
                     }
                     .transition(transition)
@@ -135,7 +93,8 @@ private extension TransitionsView {
                 }
             } label: {
                 Text(show.wrappedValue ? "Hide" : "Show")
-                    .font(.title3)
+                    .font(.title2)
+                    .fontWeight(.ultraLight)
                     .padding(12)
                     .frame(width: 200)
                     .background(.clear)

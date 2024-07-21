@@ -74,7 +74,7 @@ private extension BasicsView {
                 
                 Text(animationTitle)
                     .font(.title)
-                    .fontWeight(.semibold)
+                    .fontWeight(.ultraLight)
             }
             .frame(width: 250, height: 250)
             .scaleEffect(show.wrappedValue ? 1 : 0)
@@ -86,7 +86,8 @@ private extension BasicsView {
                 }
             } label: {
                 Text(show.wrappedValue ? "Hide" : "Show")
-                    .font(.title3)
+                    .font(.title2)
+                    .fontWeight(.ultraLight)
                     .padding(12)
                     .frame(width: 250)
                     .background(.clear)
