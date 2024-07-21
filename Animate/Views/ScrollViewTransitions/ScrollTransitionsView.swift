@@ -45,9 +45,9 @@ private extension ScrollTransitionsView {
         .padding(12)
         .overlay {
             RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
-                .stroke(Color.gray)
+                .stroke(Color.pink)
                 .compositingGroup()
-                .shadow(color: .black.opacity(0.5), radius: 4)
+                .shadow(color: .black, radius: 4)
         }
         .padding()
     }
@@ -64,7 +64,7 @@ private extension ScrollTransitionsView {
             .overlay(alignment: .bottom) {
                 if self.scrollType == scrollType {
                     RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
-                        .fill(.pink)
+                        .fill(.gray)
                         .frame(width: 44, height: 2)
                         .matchedGeometryEffect(id: "selection", in: namespace)
                 }
