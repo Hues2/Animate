@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct AppNavigationView: View {
-    @State private var selectedAppScreen : AppScreen = .keyFrames
+    @State private var selectedAppScreen : AppScreen? = .basics
     
     var body: some View {
         NavigationSplitView {
             SideBarView(selectedAppScreen: $selectedAppScreen)
         } detail: {
-            selectedAppScreen.detailView
+            ScrollView {
+                VStack(spacing: 0) {
+                    ForEach(AppScreen.allCases) { appScreen in
+                        appScreen.detailView
+                            .frame(maxHeight: .infinity)
+                            .containerRelativeFrame(.vertical)
+                            .id(appScreen)
+                    }
+                    .scrollTargetLayout()
+                }
+            }
+            .scrollPosition(id: $selectedAppScreen)
+            .scrollTargetBehavior(.paging)
+            .scrollIndicators(.hidden)
+            .scrollDisabled(true)
+            .clipped()
         }
     }
 }
