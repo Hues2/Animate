@@ -35,7 +35,6 @@ struct PhaseAnimatorsView: View {
                                     animationDuration: $animationDuration)
             .padding(.horizontal, 24)
         }
-        .frame(maxWidth: .infinity)
         .padding(.vertical, 80)
     }
 }
@@ -61,13 +60,19 @@ private extension PhaseAnimatorsView {
 private extension PhaseAnimatorsView {
     struct GreenPhaseAnimatorModifier : ViewModifier {
         private enum GreenAnimationPhase: CaseIterable {
-            case initial, middle, end
+            case initial, end
             
             var scale : CGFloat {
                 switch self {
                 case .initial: 1
-                case .middle: 1.5
-                case .end: 1
+                case .end: 1.5
+                }
+            }
+            
+            var cornerRadius : CGFloat {
+                switch self {
+                case .initial: Constants.UI.cornerRadius
+                case .end: 100
                 }
             }
         }
@@ -83,6 +88,7 @@ private extension PhaseAnimatorsView {
                 .phaseAnimator(GreenAnimationPhase.allCases,
                                trigger: toggle) { content, phase in
                     content
+                        .clipShape(.rect(cornerRadius: phase.cornerRadius))
                         .scaleEffect(phase.scale)
                         .disabled(phase != .initial)
                 } animation: { _ in animation }
