@@ -20,7 +20,7 @@ struct VerticalScrollTransition: View {
                                 .opacity(phase.isIdentity ? 1 : 0.6)
                                 .rotation3DEffect(.degrees(phase.isIdentity ? 0 : 45), axis: (x: 0, y: 1, z: 0))
                                 .rotationEffect(.degrees(phase.isIdentity ? 0 : 15))
-                                .offset(x: phase.isIdentity ? 0 : -350)
+                                .offset(x: phase.isIdentity ? 0 : -480)
                                 .blur(radius: phase.isIdentity ? 0 : 8)
                         }
                 }
@@ -35,7 +35,7 @@ private extension VerticalScrollTransition {
     func card(_ color : Color) -> some View {
         ZStack {
             color
-                .frame(width: 324, height: 380)
+                .frame(width: 300, height: 340)
                 .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
             
             Text("Random Text")
