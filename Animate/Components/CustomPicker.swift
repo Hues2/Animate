@@ -32,14 +32,14 @@ private extension CustomPicker {
         }
         .font(.title3)
         .fontWeight(.semibold)
-        .padding(12)
+        .padding(16)
         .overlay {
             RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
                 .stroke(Color.pink)
                 .compositingGroup()
                 .shadow(color: .black, radius: 4)
         }
-        .padding()
+        .padding(24)
     }
     
     func pickerSegment(_ option : T) -> some View {

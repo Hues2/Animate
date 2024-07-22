@@ -20,6 +20,7 @@ struct HorizontalScrollTransition: View {
                                 .scaleEffect(phase.isIdentity ? 1 : 0.2)
                                 .rotationEffect(Angle(degrees: phase.isIdentity ? 0 : 180))
                                 .opacity(phase.isIdentity ? 1 : 0.2)
+                                .offset(y: phase.isIdentity ? 0 : (phase.value > 0 ? 600 : -600))
                         }
                 }
                 .scrollTargetLayout()

@@ -12,7 +12,7 @@ struct VerticalScrollTransition: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 24) {
+            VStack(spacing: 12) {
                 ForEach(Array(zip(0..<colors.count, colors)), id: \.0) { _, color in
                     card(color)
                         .scrollTransition { view, phase in
@@ -20,7 +20,7 @@ struct VerticalScrollTransition: View {
                                 .opacity(phase.isIdentity ? 1 : 0.6)
                                 .rotation3DEffect(.degrees(phase.isIdentity ? 0 : 45), axis: (x: 0, y: 1, z: 0))
                                 .rotationEffect(.degrees(phase.isIdentity ? 0 : 15))
-                                .offset(x: phase.value > 0 ? 150 : -150)
+                                .offset(x: phase.isIdentity ? 0 : -350)
                                 .blur(radius: phase.isIdentity ? 0 : 8)
                         }
                 }
@@ -35,7 +35,7 @@ private extension VerticalScrollTransition {
     func card(_ color : Color) -> some View {
         ZStack {
             color
-                .frame(width: 324, height: 440)
+                .frame(width: 324, height: 380)
                 .clipShape(.rect(cornerRadius: Constants.UI.cornerRadius))
             
             Text("Random Text")
