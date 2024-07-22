@@ -21,14 +21,12 @@ private extension MatchedGeometryView {
                 "With Animation"
             }
         }
-        
-        var pickerId : String { "animationOption" }
     }
 }
 
 struct MatchedGeometryView: View {
     struct CustomColor : Identifiable, Equatable {
-        let id = UUID().uuidString
+        var id : String { self.color.description }
         let color : Color
     }
     @Namespace private var namespace
@@ -53,7 +51,7 @@ struct MatchedGeometryView: View {
             .frame(maxHeight: .infinity)
             .padding(.vertical, 24)
             
-            CustomPicker(namespace: namespace, selectedOption: $animationOption, options: AnimationOption.allCases)
+            CustomPicker(selectedOption: $animationOption, options: AnimationOption.allCases)
         }
     }
 }

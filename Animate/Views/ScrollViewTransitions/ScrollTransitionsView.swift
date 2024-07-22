@@ -21,8 +21,6 @@ private extension ScrollTransitionsView {
                 "Vertical"
             }
         }
-        
-        var pickerId : String { "scrollType" }
     }
 }
 
@@ -42,7 +40,7 @@ struct ScrollTransitionsView: View {
                     VerticalScrollTransition(colors: colors)
                 }
             }
-            CustomPicker(namespace: namespace, selectedOption: $scrollType, options: ScrollType.allCases)
+            CustomPicker(selectedOption: $scrollType, options: ScrollType.allCases)
         }
     }
 }

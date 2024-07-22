@@ -10,14 +10,13 @@ import SwiftUI
 protocol CustomPickerOption : Identifiable, Equatable, CaseIterable {
     var id : String { get }
     var title : String { get }
-    var pickerId : String { get }
 }
 
 struct CustomPicker<T : CustomPickerOption>: View {
-    let namespace : Namespace.ID
+    @Namespace private var namespace
     @Binding var selectedOption : T
     let options : [T]
-    private let id = UUID().uuidString
+    private let id = "matched_geometry_effect_id"
     
     var body: some View {
         picker
