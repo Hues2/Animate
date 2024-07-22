@@ -14,6 +14,7 @@
 		2E295E572C4ACF1500C41F03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E295E562C4ACF1500C41F03 /* ContentView.swift */; };
 		2E295E592C4ACF1600C41F03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E295E582C4ACF1600C41F03 /* Assets.xcassets */; };
 		2E295E5C2C4ACF1600C41F03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E295E5B2C4ACF1600C41F03 /* Preview Assets.xcassets */; };
+		2E59B3C02C4ECC0F00DCFD32 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59B3BF2C4ECC0F00DCFD32 /* CustomPicker.swift */; };
 		2E624ACA2C4C377700FCFDDF /* KeyFramesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E624AC92C4C377700FCFDDF /* KeyFramesView.swift */; };
 		2E624ACD2C4C556E00FCFDDF /* PhaseAnimatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E624ACC2C4C556E00FCFDDF /* PhaseAnimatorsView.swift */; };
 		2EB724A22C4AD2E50067487F /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB724A12C4AD2E50067487F /* AppNavigationView.swift */; };
@@ -39,6 +40,7 @@
 		2E295E582C4ACF1600C41F03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E295E5B2C4ACF1600C41F03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E295E5D2C4ACF1600C41F03 /* Animate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Animate.entitlements; sourceTree = "<group>"; };
+		2E59B3BF2C4ECC0F00DCFD32 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		2E624AC92C4C377700FCFDDF /* KeyFramesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFramesView.swift; sourceTree = "<group>"; };
 		2E624ACC2C4C556E00FCFDDF /* PhaseAnimatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseAnimatorsView.swift; sourceTree = "<group>"; };
 		2EB724A12C4AD2E50067487F /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				2E08A51B2C4D5AF300186904 /* AnimationControllerView.swift */,
+				2E59B3BF2C4ECC0F00DCFD32 /* CustomPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -126,8 +129,8 @@
 			children = (
 				2EB724A82C4ADC8F0067487F /* Basics */,
 				2EB724BB2C4B29F60067487F /* Transitions */,
-				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
 				2EB724B82C4B04750067487F /* MatchedGeometry */,
+				2EB724AF2C4AEFAA0067487F /* ScrollViewTransitions */,
 				2E624ACB2C4C555900FCFDDF /* PhaseAnimators */,
 				2E624AC82C4C376300FCFDDF /* KeyFrames */,
 			);
@@ -287,6 +290,7 @@
 				2E295E552C4ACF1500C41F03 /* AnimateApp.swift in Sources */,
 				2EB724BF2C4B2A230067487F /* TransitionsView.swift in Sources */,
 				2EB724A22C4AD2E50067487F /* AppNavigationView.swift in Sources */,
+				2E59B3C02C4ECC0F00DCFD32 /* CustomPicker.swift in Sources */,
 				2EB724A72C4AD3870067487F /* SideBarView.swift in Sources */,
 				2EB724B12C4AEFD30067487F /* HorizontalScrollTransition.swift in Sources */,
 				2EB724BA2C4B049B0067487F /* MatchedGeometryView.swift in Sources */,

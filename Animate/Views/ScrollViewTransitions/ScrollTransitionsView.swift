@@ -8,8 +8,21 @@
 import SwiftUI
 
 private extension ScrollTransitionsView {
-    enum ScrollType {
+    enum ScrollType : String, CaseIterable, CustomPickerOption {
         case horizontal, vertical
+        
+        var id : String { self.rawValue }
+        
+        var title : String {
+            switch self {
+            case .horizontal:
+                "Horizontal"
+            case .vertical:
+                "Vertical"
+            }
+        }
+        
+        var pickerId : String { "scrollType" }
     }
 }
 
@@ -29,47 +42,8 @@ struct ScrollTransitionsView: View {
                     VerticalScrollTransition(colors: colors)
                 }
             }
-            picker
+            CustomPicker(namespace: namespace, selectedOption: $scrollType, options: ScrollType.allCases)
         }
-    }
-}
-
-private extension ScrollTransitionsView {
-    var picker : some View {
-        HStack(spacing: 16) {
-            pickerSegment(.horizontal)
-            pickerSegment(.vertical)
-            
-        }
-        .font(.title3)
-        .fontWeight(.semibold)
-        .padding(12)
-        .overlay {
-            RoundedRectangle(cornerRadius: Constants.UI.cornerRadius)
-                .stroke(Color.pink)
-                .compositingGroup()
-                .shadow(color: .black, radius: 4)
-        }
-        .padding()
-    }
-    
-    func pickerSegment(_ scrollType : ScrollType) -> some View {
-        Text(scrollType == .horizontal ? "Horizontal" : "Vertical")
-            .contentShape(.rect)
-            .onTapGesture {
-                withAnimation(.smooth) {
-                    self.scrollType = scrollType
-                }
-            }
-            .padding(8)
-            .overlay(alignment: .bottom) {
-                if self.scrollType == scrollType {
-                    RoundedRectangle(cornerRadius: Constants.UI.pillShapeCornerRadius)
-                        .fill(.gray)
-                        .frame(width: 44, height: 2)
-                        .matchedGeometryEffect(id: "selection", in: namespace)
-                }
-            }
     }
 }
 

@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+private extension MatchedGeometryView {
+    enum AnimationOption : String, CustomPickerOption {
+        case withoutAnimation, withAnimation
+        
+        var id : String { self.rawValue }
+        
+        var title : String {
+            switch self {
+            case .withoutAnimation:
+                "Without Animation"
+            case .withAnimation:
+                "With Animation"
+            }
+        }
+        
+        var pickerId : String { "animationOption" }
+    }
+}
+
 struct MatchedGeometryView: View {
     struct CustomColor : Identifiable, Equatable {
         let id = UUID().uuidString
@@ -23,13 +42,19 @@ struct MatchedGeometryView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    @State private var animationOption : AnimationOption = .withoutAnimation
     
     var body: some View {
-        VStack(spacing: 40) {
-            selectedColorsView
-            allColorsView
+        ZStack(alignment: .topTrailing) {
+            VStack(spacing: 40) {
+                selectedColorsView
+                allColorsView
+            }
+            .frame(maxHeight: .infinity)
+            .padding(.vertical, 24)
+            
+            CustomPicker(namespace: namespace, selectedOption: $animationOption, options: AnimationOption.allCases)
         }
-        .padding(.vertical, 24)
     }
 }
 
@@ -83,7 +108,7 @@ private extension MatchedGeometryView {
             .cornerRadius(10)
             .matchedGeometryEffect(id: customColor.id, in: namespace)
             .onTapGesture {
-                withAnimation(.smooth) {
+                withAnimation(animationOption == .withoutAnimation ? .none : .smooth) {
                     action()
                 }
             }
