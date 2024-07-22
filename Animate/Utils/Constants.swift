@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Constants {
+    static let defaultAnimationDuration : CGFloat = 1
     struct UI {
         static let cornerRadius : CGFloat = 12
         static let pillShapeCornerRadius : CGFloat = 32

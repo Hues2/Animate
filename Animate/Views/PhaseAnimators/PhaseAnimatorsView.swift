@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PhaseAnimatorsView: View {
     @State private var animationType : AnimationType = .easeInOut
-    @State private var animationDuration : CGFloat = 1.2
+    @State private var animationDuration : CGFloat = Constants.defaultAnimationDuration
     
     var body: some View {
         VStack(spacing: 80) {

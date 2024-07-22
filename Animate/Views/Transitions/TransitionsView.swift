@@ -15,7 +15,7 @@ struct TransitionsView: View {
     @State private var showIndigo : Bool = true
     @State private var showPurple : Bool = true
     @State private var animationType : AnimationType = .easeInOut
-    @State private var animationDuration : CGFloat = 1.2
+    @State private var animationDuration : CGFloat = Constants.defaultAnimationDuration
     
     var body: some View {
         VStack(spacing: 80) {

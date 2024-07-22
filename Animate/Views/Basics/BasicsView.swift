@@ -13,7 +13,7 @@ struct BasicsView: View {
     @State private var showBlue : Bool = true
     @State private var showOrange : Bool = true
     @State private var showIndigo : Bool = true
-    @State private var animationDuration : CGFloat = 1.2
+    @State private var animationDuration : CGFloat = Constants.defaultAnimationDuration
     
     var body: some View {
         VStack(spacing: 80) {
