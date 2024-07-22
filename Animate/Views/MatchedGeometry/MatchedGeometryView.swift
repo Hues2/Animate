@@ -22,17 +22,18 @@ private extension MatchedGeometryView {
             }
         }
     }
-}
-
-struct MatchedGeometryView: View {
+    
     struct CustomColor : Identifiable, Equatable {
         var id : String { self.color.description }
         let color : Color
     }
+}
+
+struct MatchedGeometryView: View {
     @Namespace private var namespace
     @State private var selectedColors : [CustomColor] = []
     @State private var allColors : [CustomColor] = Constants.UI.colors.map({ CustomColor(color: $0) })
-    let columns = [
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -88,8 +89,9 @@ private extension MatchedGeometryView {
                 ForEach(allColors) { color in
                     if !selectedColors.contains(color) {
                         card(color, 100) {
+                            // This fixes an issue if the card is double tapped quickly
                             self.selectedColors.removeAll(where: { $0 == color })
-                            self.selectedColors.append(color)
+                            self.selectedColors.append(color)                            
                         }
                     }
                 }
@@ -106,7 +108,7 @@ private extension MatchedGeometryView {
             .cornerRadius(10)
             .matchedGeometryEffect(id: customColor.id, in: namespace)
             .onTapGesture {
-                withAnimation(animationOption == .withoutAnimation ? .none : .smooth) {
+                withAnimation(animationOption == .withoutAnimation ? .none : .snappy) {
                     action()
                 }
             }
